@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import VideoList from './components/movie_list';
+import Navbar from './components/navbar'
 
 const APIKEY = '1328aa12';
 const API_URL = 'http://www.omdbapi.com';
@@ -29,10 +30,13 @@ class App extends Component{
 
   render(){
   return (
+    <React.Fragment>
+      <Navbar></Navbar>
+      
     <div className="container">
       <h1>My favourite movies</h1>
       <VideoList movies={this.state.movies}></VideoList>
-    </div>
+    </div></React.Fragment>
   );
   }
 }

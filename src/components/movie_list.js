@@ -3,10 +3,10 @@ import MovieItem from './movie_item';
 
 export default function movieList({movies}){
     return (
-<ul>
+<div className="row">
       {
-        movies.map(movie => <MovieItem movie={movie}/>)
+        movies.map(movie => <MovieItem key={movie.imdbID} movie={movie}/>)
       }
-</ul>)
+</div>)
 
 }
