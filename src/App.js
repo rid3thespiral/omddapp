@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+const APIKEY = '1328aa12';
+const API_URL = 'http://www.omdbapi.com';
 
-function App() {
+class App extends Component{
+  componentDidMount(){
+    fetch(API_URL+ '?apikey=' + APIKEY+'&s=back to the future').then(res => res.json())
+    .then(apiResult => console.log(apiResult));
+  }
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>My favourite movies</h1>
     </div>
   );
+  }
 }
 
 export default App;
