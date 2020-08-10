@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import VideoList from './components/movie_list';
+
 const APIKEY = '1328aa12';
 const API_URL = 'http://www.omdbapi.com';
 
@@ -27,13 +29,9 @@ class App extends Component{
 
   render(){
   return (
-    <div className="App">
+    <div className="container">
       <h1>My favourite movies</h1>
-      <ul>
-      {
-        this.state.movies.map(movie => <li key={movie.imdbID}>{movie.Title}</li>)
-      }
-      </ul>
+      <VideoList movies={this.state.movies}></VideoList>
     </div>
   );
   }
