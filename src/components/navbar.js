@@ -12,7 +12,7 @@ export default function Navbar({onSearchTerm}){
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <Menubar></Menubar>
-    <Searchbar onSearchTerm={onSearchTerm}></Searchbar>
+    <Searchbar onSearchMovie={onSearchTerm}></Searchbar>
   </div>
 </nav>
 
