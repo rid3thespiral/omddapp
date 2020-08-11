@@ -13,6 +13,13 @@ export default class SearchBar extends Component {
         this.setState({term: evt.target.value})
         
     }
+    searchClicked = (evt) => {
+        
+            evt.preventDefault(); 
+            this.props.onSearchMovie(this.state.term);
+        
+    }
+
     render(){
     return(
     <form className="form-inline my-2 my-lg-0">
@@ -20,7 +27,7 @@ export default class SearchBar extends Component {
     onChange={this.SearchChange} 
     type="search" value={this.state.term} placeholder="Search" 
     aria-label="Search"/>
-    <button onClick = {(evt)=> { evt.preventDefault(); this.props.onSearchMovie(this.state.term)}} className="btn btn-outline-success my-2 my-sm-0" 
+    <button onClick = {this.searchClicked} className="btn btn-outline-success my-2 my-sm-0" 
     type="submit">Search</button>
   </form>)
 }}
