@@ -6,7 +6,7 @@ import Navbar from './components/navbar'
 const APIKEY = '1328aa12';
 const API_URL = 'http://www.omdbapi.com';
 
-function fetchMovies(search = '=back to the future'){
+function fetchMovies(search = ''){
   return fetch(API_URL+ '?apikey=' + APIKEY+'&s='+search).then(res => res.json());
 };
 
@@ -19,19 +19,26 @@ class App extends Component{
       totalCount: 0
     }
   }
-
-  componentDidMount(){
-    fetchMovies().then(res => {
+  searchMovies = (term = '')=>{
+    if(term.length < 3){
+      return
+    }
+    fetchMovies(term).then(res => {
       this.setState({
-        movies: res.Search
+        movies: res.Search,
+        totalCount : res.TotalResults
       })
     })
+  }
+
+  componentDidMount(){
+    this.searchMovies('back to the future')
   }
 
   render(){
   return (
     <React.Fragment>
-      <Navbar></Navbar>
+      <Navbar onSearchTerm = {this.searchMovies}></Navbar>
       
     <div className="container">
       <h1>My favourite movies</h1>
